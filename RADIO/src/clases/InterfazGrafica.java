@@ -2,7 +2,10 @@ package clases;
 /*
 ***************************************************************************
 	UNIVERSIDAD DEL VALLE DE GUATEMALA
-	AUTOR: Juan José Tzun Monterroso		CARNET: 13017
+	AUTORES:
+	Juan José Tzun Monterroso		CARNET: 13017
+	Juan Tomás García Orellana		CARNET: 13019
+	Sergio Méndez Arévalo			CARNET: 13452
 	FECHA: 02/10/2013						ARCHIVO: InterfazGrafica.java
 
 	BREVE DESCRIPCION: Establece un medio de interacción entre el usuario y 
@@ -48,7 +51,7 @@ public class InterfazGrafica {
 		ventana = new JFrame();
 		
 		//Creando el inventario
-		radio = new Radio();
+		radio = new RadioAG();
 		
 		//Caracteristicas de la ventana
 		ventana.setTitle("RADIO LA SONORA DINAMITA");
@@ -173,8 +176,8 @@ public class InterfazGrafica {
 			Object fuente = event.getSource(); //Se lee la entrada cuando se presiona algun boton o radiobutton
 			
 			if(fuente == btnEstado){
-				radio.cambiar_Estado();
 				if(radio.getEstado()){
+					radio.cambiarEstado(false);
 					btnEstado.setText("Encendido");
 					rdbAM.setEnabled(true);
 					rdbFM.setEnabled(true);
@@ -196,6 +199,7 @@ public class InterfazGrafica {
 					lblEstacion.setText("530.0");
 				}
 				else{
+					radio.cambiarEstado(true);
 					btnEstado.setText("Apagado");
 					rdbAM.setEnabled(false);
 					rdbFM.setEnabled(false);
@@ -218,21 +222,21 @@ public class InterfazGrafica {
 				
 			}
 			if(fuente == rdbAM){
-				radio.cambiar_Frecuencia(false);
-				radio.setEstacion(530.0);
+				radio.cambiarFrecuencia(false);
+				((RadioAG)radio).setEstacion(530.0);
 				lblEstacion.setText("530.0");
 			}
 			if(fuente == rdbFM){
-				radio.cambiar_Frecuencia(true);
-				radio.setEstacion(87.9);
+				radio.cambiarFrecuencia(true);
+				((RadioAG)radio).setEstacion(87.9);
 				lblEstacion.setText("87.9");
 			}
 			if(fuente == btnSubir){
-				radio.subir_Estacion(Double.parseDouble(lblEstacion.getText()));
+				radio.subirEstacion(Double.parseDouble(lblEstacion.getText()));
 				lblEstacion.setText(""+radio.getEstacion());
 			}
 			if(fuente == btnBajar){
-				radio.bajar_Estacion(Double.parseDouble(lblEstacion.getText()));
+				radio.bajarEstacion(Double.parseDouble(lblEstacion.getText()));
 				lblEstacion.setText(""+radio.getEstacion());
 			}
 			if(fuente == btn1){
@@ -243,7 +247,8 @@ public class InterfazGrafica {
 					else{
 						rdbAM.setSelected(true);
 					}
-					radio.sincronizar(1, frecuencias[1]);
+					radio.sintonizar(1);
+					((RadioAG)radio).setFrecuencia(frecuencias[1]);
 					btn1.setBackground(Color.green);
 					lblEstacion.setText(""+radio.getEstacion());
 				}
@@ -252,7 +257,7 @@ public class InterfazGrafica {
 				}
 				else{
 					frecuencias[1] = radio.getFrecuencia();
-					radio.guardar_Estacion(1, Double.parseDouble(lblEstacion.getText()));
+					radio.guardarEstacion(1, Double.parseDouble(lblEstacion.getText()));
 					btn1.setBackground(Color.blue);
 				}
 				
@@ -265,7 +270,8 @@ public class InterfazGrafica {
 					else{
 						rdbAM.setSelected(true);
 					}
-					radio.sincronizar(2, frecuencias[2]);
+					radio.sintonizar(2);
+					((RadioAG)radio).setFrecuencia(frecuencias[2]);
 					btn2.setBackground(Color.green);
 					lblEstacion.setText(""+radio.getEstacion());
 				}
@@ -274,7 +280,7 @@ public class InterfazGrafica {
 				}
 				else{
 					frecuencias[2] = radio.getFrecuencia();
-					radio.guardar_Estacion(2, Double.parseDouble(lblEstacion.getText()));
+					radio.guardarEstacion(2, Double.parseDouble(lblEstacion.getText()));
 					btn2.setBackground(Color.blue);
 				}
 				
@@ -287,7 +293,8 @@ public class InterfazGrafica {
 					else{
 						rdbAM.setSelected(true);
 					}
-					radio.sincronizar(3, frecuencias[3]);
+					radio.sintonizar(3);
+					((RadioAG)radio).setFrecuencia(frecuencias[3]);
 					btn3.setBackground(Color.green);
 					lblEstacion.setText(""+radio.getEstacion());
 				}
@@ -296,7 +303,7 @@ public class InterfazGrafica {
 				}
 				else{
 					frecuencias[3] = radio.getFrecuencia();
-					radio.guardar_Estacion(3, Double.parseDouble(lblEstacion.getText()));
+					radio.guardarEstacion(3, Double.parseDouble(lblEstacion.getText()));
 					btn3.setBackground(Color.blue);
 				}
 				
@@ -309,7 +316,8 @@ public class InterfazGrafica {
 					else{
 						rdbAM.setSelected(true);
 					}
-					radio.sincronizar(4, frecuencias[4]);
+					radio.sintonizar(4);
+					((RadioAG)radio).setFrecuencia(frecuencias[4]);
 					btn4.setBackground(Color.green);
 					lblEstacion.setText(""+radio.getEstacion());
 				}
@@ -318,7 +326,7 @@ public class InterfazGrafica {
 				}
 				else{
 					frecuencias[4] = radio.getFrecuencia();
-					radio.guardar_Estacion(4, Double.parseDouble(lblEstacion.getText()));
+					radio.guardarEstacion(4, Double.parseDouble(lblEstacion.getText()));
 					btn4.setBackground(Color.blue);
 				}
 				
@@ -331,7 +339,8 @@ public class InterfazGrafica {
 					else{
 						rdbAM.setSelected(true);
 					}
-					radio.sincronizar(5, frecuencias[5]);
+					radio.sintonizar(5);
+					((RadioAG)radio).setFrecuencia(frecuencias[5]);
 					btn5.setBackground(Color.green);
 					lblEstacion.setText(""+radio.getEstacion());
 				}
@@ -340,7 +349,7 @@ public class InterfazGrafica {
 				}
 				else{
 					frecuencias[5] = radio.getFrecuencia();
-					radio.guardar_Estacion(5, Double.parseDouble(lblEstacion.getText()));
+					radio.guardarEstacion(5, Double.parseDouble(lblEstacion.getText()));
 					btn5.setBackground(Color.blue);
 				}
 				
@@ -353,7 +362,8 @@ public class InterfazGrafica {
 					else{
 						rdbAM.setSelected(true);
 					}
-					radio.sincronizar(6, frecuencias[6]);
+					radio.sintonizar(6);
+					((RadioAG)radio).setFrecuencia(frecuencias[6]);
 					btn6.setBackground(Color.green);
 					lblEstacion.setText(""+radio.getEstacion());
 				}
@@ -362,7 +372,7 @@ public class InterfazGrafica {
 				}
 				else{
 					frecuencias[6] = radio.getFrecuencia();
-					radio.guardar_Estacion(6, Double.parseDouble(lblEstacion.getText()));
+					radio.guardarEstacion(6, Double.parseDouble(lblEstacion.getText()));
 					btn6.setBackground(Color.blue);
 				}
 				
@@ -375,7 +385,8 @@ public class InterfazGrafica {
 					else{
 						rdbAM.setSelected(true);
 					}
-					radio.sincronizar(7, frecuencias[7]);
+					radio.sintonizar(7);
+					((RadioAG)radio).setFrecuencia(frecuencias[7]);
 					btn7.setBackground(Color.green);
 					lblEstacion.setText(""+radio.getEstacion());
 				}
@@ -384,7 +395,7 @@ public class InterfazGrafica {
 				}
 				else{
 					frecuencias[7] = radio.getFrecuencia();
-					radio.guardar_Estacion(7, Double.parseDouble(lblEstacion.getText()));
+					radio.guardarEstacion(7, Double.parseDouble(lblEstacion.getText()));
 					btn7.setBackground(Color.blue);
 				}
 				
@@ -397,7 +408,8 @@ public class InterfazGrafica {
 					else{
 						rdbAM.setSelected(true);
 					}
-					radio.sincronizar(8, frecuencias[8]);
+					radio.sintonizar(8);
+					((RadioAG)radio).setFrecuencia(frecuencias[8]);
 					btn8.setBackground(Color.green);
 					lblEstacion.setText(""+radio.getEstacion());
 				}
@@ -406,7 +418,7 @@ public class InterfazGrafica {
 				}
 				else{
 					frecuencias[8] = radio.getFrecuencia();
-					radio.guardar_Estacion(8, Double.parseDouble(lblEstacion.getText()));
+					radio.guardarEstacion(8, Double.parseDouble(lblEstacion.getText()));
 					btn8.setBackground(Color.blue);
 				}
 				
@@ -419,7 +431,8 @@ public class InterfazGrafica {
 					else{
 						rdbAM.setSelected(true);
 					}
-					radio.sincronizar(9, frecuencias[9]);
+					radio.sintonizar(9);
+					((RadioAG)radio).setFrecuencia(frecuencias[9]);
 					btn9.setBackground(Color.green);
 					lblEstacion.setText(""+radio.getEstacion());
 				}
@@ -428,7 +441,7 @@ public class InterfazGrafica {
 				}
 				else{
 					frecuencias[9] = radio.getFrecuencia();
-					radio.guardar_Estacion(9, Double.parseDouble(lblEstacion.getText()));
+					radio.guardarEstacion(9, Double.parseDouble(lblEstacion.getText()));
 					btn9.setBackground(Color.blue);
 				}
 				
@@ -441,7 +454,8 @@ public class InterfazGrafica {
 					else{
 						rdbAM.setSelected(true);
 					}
-					radio.sincronizar(10, frecuencias[10]);
+					radio.sintonizar(10);
+					((RadioAG)radio).setFrecuencia(frecuencias[10]);
 					btn10.setBackground(Color.green);
 					lblEstacion.setText(""+radio.getEstacion());
 				}
@@ -450,7 +464,7 @@ public class InterfazGrafica {
 				}
 				else{
 					frecuencias[10] = radio.getFrecuencia();
-					radio.guardar_Estacion(10, Double.parseDouble(lblEstacion.getText()));
+					radio.guardarEstacion(10, Double.parseDouble(lblEstacion.getText()));
 					btn10.setBackground(Color.blue);
 				}
 				
@@ -463,7 +477,8 @@ public class InterfazGrafica {
 					else{
 						rdbAM.setSelected(true);
 					}
-					radio.sincronizar(11, frecuencias[11]);
+					radio.sintonizar(11);
+					((RadioAG)radio).setFrecuencia(frecuencias[11]);
 					btn11.setBackground(Color.green);
 					lblEstacion.setText(""+radio.getEstacion());
 				}
@@ -472,7 +487,7 @@ public class InterfazGrafica {
 				}
 				else{
 					frecuencias[11] = radio.getFrecuencia();
-					radio.guardar_Estacion(11, Double.parseDouble(lblEstacion.getText()));
+					radio.guardarEstacion(11, Double.parseDouble(lblEstacion.getText()));
 					btn11.setBackground(Color.blue);
 				}
 				
@@ -485,7 +500,8 @@ public class InterfazGrafica {
 					else{
 						rdbAM.setSelected(true);
 					}
-					radio.sincronizar(12, frecuencias[12]);
+					radio.sintonizar(12);
+					((RadioAG)radio).setFrecuencia(frecuencias[12]);
 					btn12.setBackground(Color.green);
 					lblEstacion.setText(""+radio.getEstacion());
 				}
@@ -494,7 +510,7 @@ public class InterfazGrafica {
 				}
 				else{
 					frecuencias[12] = radio.getFrecuencia();
-					radio.guardar_Estacion(12, Double.parseDouble(lblEstacion.getText()));
+					radio.guardarEstacion(12, Double.parseDouble(lblEstacion.getText()));
 					btn12.setBackground(Color.blue);
 				}
 				
