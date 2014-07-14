@@ -21,7 +21,7 @@ public class InterfazGrafica {
 	//ATRIBUTOS
 	private JPanel panel;
 	private JFrame ventana;
-	private Radio radio;
+	private RadioAG radio = new RadioAG(); //ESTA LINEA ES NECESARIO CAMBIARLA POR EL NOMBRE DE LAS CLASES RADIO DE OTROS GRUPOS
 	private JRadioButton rdbAM;
 	private JRadioButton rdbFM;
 	private JLabel lblEstacion;
@@ -49,9 +49,6 @@ public class InterfazGrafica {
 		//Inicializando el panel y la ventana
 		panel = new JPanel();
 		ventana = new JFrame();
-		
-		//Creando el inventario
-		radio = new RadioAG();
 		
 		//Caracteristicas de la ventana
 		ventana.setTitle("RADIO LA SONORA DINAMITA");
@@ -223,12 +220,12 @@ public class InterfazGrafica {
 			}
 			if(fuente == rdbAM){
 				radio.cambiarFrecuencia(false);
-				((RadioAG)radio).setEstacion(530.0);
+				radio.setEstacion(530.0);
 				lblEstacion.setText("530.0");
 			}
 			if(fuente == rdbFM){
 				radio.cambiarFrecuencia(true);
-				((RadioAG)radio).setEstacion(87.9);
+				radio.setEstacion(87.9);
 				lblEstacion.setText("87.9");
 			}
 			if(fuente == btnSubir){
@@ -248,7 +245,7 @@ public class InterfazGrafica {
 						rdbAM.setSelected(true);
 					}
 					radio.sintonizar(1);
-					((RadioAG)radio).setFrecuencia(frecuencias[1]);
+					radio.setFrecuencia(frecuencias[1]);
 					btn1.setBackground(Color.green);
 					lblEstacion.setText(""+radio.getEstacion());
 				}
@@ -271,7 +268,7 @@ public class InterfazGrafica {
 						rdbAM.setSelected(true);
 					}
 					radio.sintonizar(2);
-					((RadioAG)radio).setFrecuencia(frecuencias[2]);
+					radio.setFrecuencia(frecuencias[2]);
 					btn2.setBackground(Color.green);
 					lblEstacion.setText(""+radio.getEstacion());
 				}
@@ -294,7 +291,7 @@ public class InterfazGrafica {
 						rdbAM.setSelected(true);
 					}
 					radio.sintonizar(3);
-					((RadioAG)radio).setFrecuencia(frecuencias[3]);
+					radio.setFrecuencia(frecuencias[3]);
 					btn3.setBackground(Color.green);
 					lblEstacion.setText(""+radio.getEstacion());
 				}
@@ -317,7 +314,7 @@ public class InterfazGrafica {
 						rdbAM.setSelected(true);
 					}
 					radio.sintonizar(4);
-					((RadioAG)radio).setFrecuencia(frecuencias[4]);
+					radio.setFrecuencia(frecuencias[4]);
 					btn4.setBackground(Color.green);
 					lblEstacion.setText(""+radio.getEstacion());
 				}
@@ -340,7 +337,7 @@ public class InterfazGrafica {
 						rdbAM.setSelected(true);
 					}
 					radio.sintonizar(5);
-					((RadioAG)radio).setFrecuencia(frecuencias[5]);
+					radio.setFrecuencia(frecuencias[5]);
 					btn5.setBackground(Color.green);
 					lblEstacion.setText(""+radio.getEstacion());
 				}
@@ -363,7 +360,7 @@ public class InterfazGrafica {
 						rdbAM.setSelected(true);
 					}
 					radio.sintonizar(6);
-					((RadioAG)radio).setFrecuencia(frecuencias[6]);
+					radio.setFrecuencia(frecuencias[6]);
 					btn6.setBackground(Color.green);
 					lblEstacion.setText(""+radio.getEstacion());
 				}
@@ -386,7 +383,7 @@ public class InterfazGrafica {
 						rdbAM.setSelected(true);
 					}
 					radio.sintonizar(7);
-					((RadioAG)radio).setFrecuencia(frecuencias[7]);
+					radio.setFrecuencia(frecuencias[7]);
 					btn7.setBackground(Color.green);
 					lblEstacion.setText(""+radio.getEstacion());
 				}
@@ -409,7 +406,7 @@ public class InterfazGrafica {
 						rdbAM.setSelected(true);
 					}
 					radio.sintonizar(8);
-					((RadioAG)radio).setFrecuencia(frecuencias[8]);
+					radio.setFrecuencia(frecuencias[8]);
 					btn8.setBackground(Color.green);
 					lblEstacion.setText(""+radio.getEstacion());
 				}
@@ -432,7 +429,7 @@ public class InterfazGrafica {
 						rdbAM.setSelected(true);
 					}
 					radio.sintonizar(9);
-					((RadioAG)radio).setFrecuencia(frecuencias[9]);
+					radio.setFrecuencia(frecuencias[9]);
 					btn9.setBackground(Color.green);
 					lblEstacion.setText(""+radio.getEstacion());
 				}
@@ -455,7 +452,7 @@ public class InterfazGrafica {
 						rdbAM.setSelected(true);
 					}
 					radio.sintonizar(10);
-					((RadioAG)radio).setFrecuencia(frecuencias[10]);
+					radio.setFrecuencia(frecuencias[10]);
 					btn10.setBackground(Color.green);
 					lblEstacion.setText(""+radio.getEstacion());
 				}
@@ -478,7 +475,7 @@ public class InterfazGrafica {
 						rdbAM.setSelected(true);
 					}
 					radio.sintonizar(11);
-					((RadioAG)radio).setFrecuencia(frecuencias[11]);
+					radio.setFrecuencia(frecuencias[11]);
 					btn11.setBackground(Color.green);
 					lblEstacion.setText(""+radio.getEstacion());
 				}
@@ -501,7 +498,7 @@ public class InterfazGrafica {
 						rdbAM.setSelected(true);
 					}
 					radio.sintonizar(12);
-					((RadioAG)radio).setFrecuencia(frecuencias[12]);
+					radio.setFrecuencia(frecuencias[12]);
 					btn12.setBackground(Color.green);
 					lblEstacion.setText(""+radio.getEstacion());
 				}
